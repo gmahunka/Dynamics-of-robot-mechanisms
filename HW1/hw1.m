@@ -122,21 +122,21 @@ for i = 1:length(dd)
      end
      f(i)=omega/(2*pi*tau);
 end
-figure;
-subplot(1,2,2);
-hold on;
-xlabel('f [Hz]'); ylabel('d [-]');
-plot(f,dd);
-plot([0,45],[d1,d1],'r');
-plot([0,45],[0.8284,0.8284], 'r--');
-plot([0,45],[0,0], 'r--');
-subplot(1,2,1);
-hold on;
-xlabel('p [-]'); ylabel('d [-]');
-plot(pp,dd)
-plot([0,0.2],[d1,d1]);
-plot([0,0.2],[0.8284,0.8284], 'r--');
-plot([0,0.2],[0,0], 'r--');
+% figure;
+% subplot(1,2,2);
+% hold on;
+% xlabel('f [Hz]'); ylabel('d [-]');
+% plot(f,dd);
+% plot([0,45],[d1,d1],'r');
+% plot([0,45],[0.8284,0.8284], 'r--');
+% plot([0,45],[0,0], 'r--');
+% subplot(1,2,1);
+% hold on;
+% xlabel('p [-]'); ylabel('d [-]');
+% plot(pp,dd)
+% plot([0,0.2],[d1,d1]);
+% plot([0,0.2],[0.8284,0.8284], 'r--');
+% plot([0,0.2],[0,0], 'r--');
 
 %% #5
 syms rho p d
@@ -162,7 +162,7 @@ Delta_2=C/P2;
 %% #6
 x0 = 10 * Delta_2;   % Initial position in meters
 Tmax = 0.2;         % Simulation time in seconds
-dt = 0.0001;         % Time step
+dt = tau;         % Time step
 
 t = 0:dt:Tmax;
 N = length(t);
@@ -196,18 +196,18 @@ end
 % title('Velocity'); grid on;
 % 
 % figure;
-% plot(t, a, 'g', 'LineWidth', 1.5);
+% stairs(t, a, 'g', 'LineWidth', 1.5);
 % xlabel('Time [s]'); ylabel('Acceleration a(t) [m/s^2]');
 % title('Acceleration'); grid on;
 % 
 % figure;
-% plot(t, Q2, 'k', 'LineWidth', 1.5);
+% stairs(t, Q2, 'k', 'LineWidth', 1.5);
 % xlabel('Time [s]'); ylabel('Control Force Q2(t) [N]');
 % title('Control Force'); grid on;
 %% Additional tasks
 x0 = 10*Delta_2;   % Initial position in meters
 Tmax = 0.2;         % Simulation time in seconds
-dt = 0.001;         % Time step
+dt = tau;         % Time step
 
 t = 0:dt:Tmax;
 N = length(t);
