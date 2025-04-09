@@ -149,7 +149,7 @@ Delta_2=C/P2;
 %% #6
 x0 = 10 * Delta_2;   % Initial position in meters
 Tmax = 0.2;         % Simulation time in seconds
-dt = tau;         % Time step, this could be increased resultin in a smoother plot, physically impossible due to tau
+dt = tau;         % Time step, this could be increased resultin in a smoother plot
 
 t = 0:dt:Tmax;
 N = length(t);
@@ -158,6 +158,7 @@ v = zeros(1, N);
 a = zeros(1, N);
 Q2 = zeros(1, N);
 
+% Initial condition
 x(1) = x0;
 
 % Simulation loop using numerical integration, backward Euler
@@ -191,7 +192,7 @@ end
 % xlabel('Time [s]'); ylabel('Control Force Q2(t) [N]');
 % title('Control Force'); grid on;
 %% Additional tasks
-x0 = 10*Delta_2;   % Initial position in meters, this can be varied
+x0 = 10*Delta_2;   % Initial position in meters
 Tmax = 0.2;         % Simulation time in seconds
 dt = tau;         % Time step
 

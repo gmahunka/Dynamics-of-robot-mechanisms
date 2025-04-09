@@ -1,21 +1,18 @@
 clc; clear; close all;
-holvan=0;
-% Define parameter space
+holvan=0; % only used to trak proces
 p_values = 0:0.005:0.16;
 d_values = 0:0.005:0.9;
 [P, D] = meshgrid(p_values, d_values);  % Create grid
 stability_map = zeros(size(P));  % Store stability (1 = stable, 0 = unstable)
 
-% Symbolic variables
 syms p d mu eta
 A = [mu, -1,  0,  0;
       0, mu-1, -1, -1/2;
       0, 0, mu-1, -1;
      -d, (p+d), 0, mu];
 
-% Solve characteristic equation for eigenvalues
 eq = det(A) == 0;
-eigenvalues = solve(eq, mu);  % Solve for mu
+eigenvalues = solve(eq, mu);  
 
 % Iterate over grid points
 for i = 1:length(p_values)
@@ -54,7 +51,7 @@ end
 % Plot stability map
 figure;
 imagesc(p_values, d_values, stability_map);
-set(gca,'YDir','normal'); % Fix the axis orientation
+set(gca,'YDir','normal'); 
 colormap([1 0 0; 0 0 1]); % Red for unstable, Blue for stable
 xlabel('p [-]');
 ylabel('d [-]');
